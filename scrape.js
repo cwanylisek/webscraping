@@ -1,5 +1,12 @@
 const request = require('request');
 const cheerio = require('cheerio');
+const fs = require('fs');
+const writeStream = fs.createWriteStream('post.txt');
+const contactDate = fs.createWriteStream('contact.txt');
+
+//header
+writeStream.write(`Phone \n`);
+contactDate.write(`Name, Adress \n`);
 
 var href = '';
 
@@ -19,6 +26,7 @@ for (i = 1; i <= 9; i++) {
                 const address = $(el).find('ul').text(); 
     
                 console.log(data, address); //scrape names from first page
+                contactDate.write(`${data}, ${address} \n`);
                 //console.log(href);
             })
         }
@@ -41,8 +49,10 @@ setTimeout(() => {
                     phone.each((i, el) => {
                         const number = $(el).find('b').text();
                         console.log(number); //nr
+                        writeStream.write(`${number} \n`);
                     })
                 } else {
+                    writeStream.write(`brak numeru \n`);
                     return console.log('brak numeru');
                 }
             };
