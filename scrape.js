@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 
 var href = '';
 
-for (i = 1; i <= 18; i++) {
+for (i = 1; i <= 9; i++) {
     const url = 'https://www.znanylekarz.pl/fizjoterapeuta/poznan/'+i;
     //console.log(url);
 
@@ -18,7 +18,7 @@ for (i = 1; i <= 18; i++) {
                 href += $(el).find('.rank-element-name').find('a').attr('href'); //assignment operator
                 const address = $(el).find('ul').text(); 
     
-                //console.log(data, href, address); //scrape names from first page
+                console.log(data, address); //scrape names from first page
                 //console.log(href);
             })
         }
@@ -31,12 +31,12 @@ setTimeout(() => {
     let splittedHref = reqHref.split('undefined');
     console.log(splittedHref.length, 'ilosc');
     //pass properly url's
-    console.log(splittedHref[100]);
+    //console.log(splittedHref[350]);
     for (x = 0; x <= splittedHref.length; x++) {
-        request(splittedHref[100], (error, response, html) => {
+        request(`${splittedHref[x]}`, (error, response, html) => {
             if(!error && response.statusCode == 200) {
                 const $ = cheerio.load(html);
-                const phone = $('.modal').find('.well').data('data-id', 'phone-number').find('a');
+                const phone = $('.modal').find('.well').data('data-id', 'phone-number');//.find('a');
                 if (phone != undefined) {
                     phone.each((i, el) => {
                         const number = $(el).find('b').text();
