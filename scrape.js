@@ -5,12 +5,12 @@ const writeStream = fs.createWriteStream('post.txt');
 const contactDate = fs.createWriteStream('contact.txt');
 
 //header
-writeStream.write(`Phone \n`);
-contactDate.write(`Name, Adress \n`);
+//writeStream.write(`Phone \n`);
+//contactDate.write(`Name, Adress \n`);
 
 var href = '';
 
-for (i = 1; i <= 9; i++) {
+for (i = 1; i <= 5; i++) {
     const url = 'https://www.znanylekarz.pl/fizjoterapeuta/poznan/'+i;
     //console.log(url);
 
@@ -24,11 +24,11 @@ for (i = 1; i <= 9; i++) {
                 const data = $(el).find('.rank-element-name__link').children('span').text().replace(/\s\s+/g, '');
                 href += $(el).find('.rank-element-name').find('a').attr('href'); //assignment operator
                 const address = $(el).find('ul').text(); 
-    
                 console.log(data, address); //scrape names from first page
-                contactDate.write(`${data}, ${address} \n`);
+                //contactDate.write(`${data} ${address} \n`);
                 //console.log(href);
             })
+            console.log(name.length, 'name count');
         }
     });
 }
@@ -37,7 +37,7 @@ setTimeout(() => {
     //phone-numbers
     const reqHref = href;
     let splittedHref = reqHref.split('undefined');
-    console.log(splittedHref.length, 'ilosc');
+    console.log(splittedHref, 'ilosc');
     //pass properly url's
     //console.log(splittedHref[350]);
     for (x = 0; x <= splittedHref.length; x++) {
@@ -48,12 +48,12 @@ setTimeout(() => {
                 if (phone != undefined) {
                     phone.each((i, el) => {
                         const number = $(el).find('b').text();
-                        console.log(number); //nr
-                        writeStream.write(`${number} \n`);
+                        //console.log(number); //nr
+                        //writeStream.write(`${number} \n`);
                     })
                 } else {
-                    writeStream.write(`brak numeru \n`);
-                    return console.log('brak numeru');
+                    //writeStream.write(`brak numeru \n`);
+                    //return console.log('brak numeru');
                 }
             };
         });
