@@ -5,8 +5,8 @@ const writeStream = fs.createWriteStream('post.txt');
 const contactDate = fs.createWriteStream('contact.txt');
 
 //header
-//writeStream.write(`Phone \n`);
-//contactDate.write(`Name, Adress \n`);
+writeStream.write(`Phone \n`);
+contactDate.write(`Name, Adress \n`);
 
 var href = '';
 
@@ -28,7 +28,7 @@ for (i = 1; i <= 5; i++) {
                 //contactDate.write(`${data} ${address} \n`);
                 //console.log(href);
             })
-            console.log(name.length, 'name count');
+            //console.log(name.length, 'name count');
         }
     });
 }
@@ -37,7 +37,7 @@ setTimeout(() => {
     //phone-numbers
     const reqHref = href;
     let splittedHref = reqHref.split('undefined');
-    console.log(splittedHref, 'ilosc');
+    //console.log(splittedHref, 'ilosc');
     //pass properly url's
     //console.log(splittedHref[350]);
     for (x = 0; x <= splittedHref.length; x++) {
@@ -48,17 +48,16 @@ setTimeout(() => {
                 if (phone != undefined) {
                     phone.each((i, el) => {
                         const number = $(el).find('b').text();
-                        //console.log(number); //nr
+                        console.log(i, number); //nr
                         //writeStream.write(`${number} \n`);
                     })
                 } else {
                     //writeStream.write(`brak numeru \n`);
-                    //return console.log('brak numeru');
+                    return console.log(i, 'brak numeru');
                 }
             };
         });
     }
 }, 8000);
 
-
-
+//poprawic przechodzenie przez numery, żeby zwracało tylko jeden numer i to dokładnie wartosc containera który nr posiada
