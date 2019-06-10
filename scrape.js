@@ -24,7 +24,7 @@ for (i = 1; i <= 5; i++) {
                 const data = $(el).find('.rank-element-name__link').children('span').text().replace(/\s\s+/g, '');
                 href += $(el).find('.rank-element-name').find('a').attr('href'); //assignment operator
                 const address = $(el).find('ul').text(); 
-                console.log(data, address); //scrape names from first page
+                data.length > 1 == true ? console.log(i, data, address) : null; //scrape names from first page check if exist
                 //contactDate.write(`${data} ${address} \n`);
                 //console.log(href);
             })
