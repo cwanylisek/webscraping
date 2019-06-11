@@ -36,15 +36,14 @@ for (i = 1; i <= 1; i++) {
 setTimeout(() => {
     //phone-numbers
     const reqHref = href;
-    let win = [];
-    let loose = [];
     let splittedHref = reqHref.split('undefined');
     function downloadPage(url) {
         return new Promise((resolve, reject) => {
             //console.log(splittedHref, 'ilosc');
             //pass properly url's
             //console.log(splittedHref[350]);
-            for (x = 0; x <= splittedHref.length; x++) {
+            var win = [];
+            for (x = 0; x <= splittedHref.length; x++) {  // forEach loop instead of for (x = 0; x <= splittedHref.length; x++)
                 //console.log(splittedHref[x],'href clog')
                 request(url, (error, response, html) => {
                     if(!error && response.statusCode == 200) {
@@ -66,30 +65,33 @@ setTimeout(() => {
                             return loose
                         }
                     };
-                    resolve(win, loose);
                 });
-            }
+            };
+            resolve(win);
+            reject(new Error(`Ooops, nie poszło!`));
         });
     }
 
     // now to program the "usual" way
     // all you need to do is use async functions and await
     // for functions returning promises
-    for (x = 0; x <= splittedHref.length; x++) {
-
-        async function myBackEndLogic() {
-            try {
-                    const html = await downloadPage(`${splittedHref[x]}`)
-                    console.log('SHOULD WORK:');
-                    console.log(html);
-            } catch (error) {
-                console.error('ERROR:');
-                console.error(error);
-            }
-        }
-        myBackEndLogic();
+    console.log(splittedHref, 'splitted')
+    async function myBackEndLogic(splittedHref) {
+        splittedHref.forEach(async (x) => {
+            //console.log(splittedHref, 'splitted in async');
+            console.log(splittedHref.length, 'lenght');
+      
+            console.log(splittedHref,' splitted');
+            console.log(splittedHref[x],'x');
+            let html = await downloadPage(`${splittedHref[x]}`)
+            console.log('SHOULD WORK:');
+            console.log(html);
+                
+        });
+        console.log('forEach function counter'+x);
     }
 
+    myBackEndLogic();
     // run your async function
 }, 8000);
 
