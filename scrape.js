@@ -27,7 +27,7 @@ for (i = 1; i <= 1; i++) {
                 href += $(el).find('.rank-element-name').find('a').attr('href'); //assignment operator
                 const address = $(el).find('ul').text(); 
                 data.length > 1 == true ? console.log(i, data, address) : null; //scrape names from first page check if exist
-                //contactDate.write(`${data} ${address} \n`);
+                contactDate.write(`${data} ${address} \n`);
                 //console.log(href);
             })
             //console.log(name.length, 'name count');
@@ -96,7 +96,6 @@ setTimeout(() => {
                                 win = number.length > 1 ? (i, number) : null;
                                 //console.log(i, number); //nr
                                 //console.log(number.length,'n length');
-                                //writeStream.write(`${number} \n`);
                                 resolve(win)
                             })
                         } else {
@@ -121,7 +120,8 @@ setTimeout(() => {
             try {
                 const html = await downloadPage(`${splittedHref[k]}`)
                 console.log('SHOULD WORK:'+k);
-                console.log(html);
+                console.log(html, splittedHref[k]);
+                writeStream.write(`${html} ${splittedHref[k]} \n`);
             } catch (error) {
                 console.error('ERROR:');
                 console.error(error);
@@ -129,7 +129,7 @@ setTimeout(() => {
         }
         console.log(splittedHref.length, 'asdas');
         for (k = 0; k <= 21; k++) {
-            console.log(splittedHref[k], 'addres'+k);
+            //console.log(splittedHref[k], 'addres'+k);
             myBackEndLogic(k);
         }
 

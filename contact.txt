@@ -1,1 +1,22 @@
 Name, Adress 
+Marcin Zielonka Mogileńska 4, PoznańPraktyka Specjalistyczna 
+Jacek Daleszyński ul. Źródlana 11a, PoznańMEDI_SPA Jacek Daleszyński   
+mgr Maciej Dąbrowski Zagajnikowa 9, PoznańDM Fizjoterapia. Gabinet fizjoterapii i rehabilitacji.Jana Henryka Dąbrowskiego 77a, PoznańMotiMed Gabinety Lekarskie Nobel Tower  
+mgr Michał Wojtkowiak Starowiejska 1i /1, PoznańGABINET OSTEOPATII I REHABILITACJI  - GABINETY LEKARSKIE 
+mgr Damian Słowiński Lusowo ul.Wierzbowa 2, Tarnowo PodgórneCentrum Rehabilitacji REHAstrefa 
+mgr Monika Sroka Forsycjowa 2c/9, KomornikiGabinet Fizjoterapeutyczny 
+Szymon Sekulski Gniewska 16, PoznańFizjoterapia Szymon Sekulski 
+mgr Paulina Stępniak Niegolewskich 30, PoznańLEKARZ Prywatne Gabinety Lekarskie 
+mgr Karolina Wełniak Szarotkowa 55, PoznańCentrum Terapii Asemi 
+mgr Radosław Frydrychowicz Os. Wichrowe Wzgórze 22S/1, PoznańRadFizjo Gabinet Fizjoterapii i Masażu 
+dr Marcin Grześkowiak Osiedle Bolesława Śmiałego 36, PoznańOMT CENTER dr M. Grześkowiak 
+mgr Roman Kozłowski Rakoniewicka 23 A, PoznańKlinika Art-Medica 
+mgr Przemysław Jeziorski Jackowskiego 33/1, PoznańPhysioArt Fizjoterapia Przemysław Jeziorski 
+mgr Robert Hetman Kasprzaka 16, pok. 235 (wejście C od ul. Stablewskiego), PoznańRehaKinesio - Gabinet Rehabilitacji i Terapii Manualnej 
+mgr Jacek Kalkstein Promienista 62, PoznańSMART THERAPY 
+mgr Adam Lebiotkowski Ratajczaka 31/9, PoznańALfizjo Adam Lebiotkowski 
+mgr Marcin Kaźmierak ul. Dąbrowskiego 81/85, PoznańPozmedica 
+mgr Marcin Haliński Osiedle Bolesława Śmiałego 36, PoznańOMT CENTER dr M. Grześkowiakos. Stefana Batorego, Poznań"Fizjo-Hand" Marcin Haliński wizyty domowe 
+Mateusz Popielarski Lawendowa 48, PoznańMassage Popielarski & Partners 
+Victoria Rufael Niegolewskich 30, PoznańLEKARZ Prywatne Gabinety Lekarskie 
+  
