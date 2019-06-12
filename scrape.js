@@ -12,7 +12,7 @@ contactDate.write(`Name; Adress; url \n`);
 
 var href = '';
 
-for (i = 1; i <= 1; i++) {
+for (i = 2; i <= 3; i++) {
     const url = 'https://www.znanylekarz.pl/fizjoterapeuta/poznan/'+i;
     //console.log(url);
 
@@ -96,14 +96,12 @@ setTimeout(() => {
                                 const number = $(el).find('b').text();
                                 win = number.length > 1 ? (i, number) : null;
                                 //console.log(i, number); //nr
-                                //console.log(number.length,'n length');
                                 resolve(win)
                             })
                         } else {
-                            //writeStream.write(`brak numeru \n`);
-                            loose = console.log(i, 'brak numeru');
+                            //loose = console.log(i, 'brak numeru');
                             //console.log(i, 'brak numeru');
-                            return loose
+                            return null;
                         }
                     };
                     //resolve(win);
@@ -126,13 +124,14 @@ setTimeout(() => {
             } catch (error) {
                 console.error('ERROR:'+k);
                 console.error(error);
+                writeStream.write(`brak numeru ; ${splittedHref[k]} \n`);
             }
         }
         console.log(splittedHref.length, 'asdas');
-        for (k = 0; k <= 21; k++) {
+        for (k = 0; k <= splittedHref.length; k++) {
             //console.log(splittedHref[k], 'addres'+k);
             myBackEndLogic(k);
         }
 
     // run your async function
-}, 8000);
+}, 20000);
