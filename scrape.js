@@ -3,12 +3,12 @@ const request = require('request');
 //const Promise = require('bluebird');
 const cheerio = require('cheerio');
 const fs = require('fs');
-const writeStream = fs.createWriteStream('post.txt');
-const contactDate = fs.createWriteStream('contact.txt');
+const writeStream = fs.createWriteStream('phone.csv');
+const contactDate = fs.createWriteStream('data.csv');
 
 //header
-writeStream.write(`Phone \n`);
-contactDate.write(`Name, Adress \n`);
+writeStream.write(`Phone; url \n`);
+contactDate.write(`Name; Adress; url \n`);
 
 var href = '';
 
@@ -25,9 +25,10 @@ for (i = 1; i <= 1; i++) {
             name.each((i, el) => {
                 const data = $(el).find('.rank-element-name__link').children('span').text().replace(/\s\s+/g, '');
                 href += $(el).find('.rank-element-name').find('a').attr('href'); //assignment operator
-                const address = $(el).find('ul').text(); 
-                data.length > 1 == true ? console.log(i, data, address) : null; //scrape names from first page check if exist
-                contactDate.write(`${data} ${address} \n`);
+                const address = $(el).find('ul').text();
+                const firstLoopHref = $(el).find('.rank-element-name').find('a').attr('href');
+                data.length > 1 == true ? console.log(i, data, address, firstLoopHref) : null; //scrape names from first page check if exist
+                data.length > 1 == true ? contactDate.write(`${data}; ${address}; ${firstLoopHref} \n`): null;
                 //console.log(href);
             })
             //console.log(name.length, 'name count');
@@ -120,10 +121,10 @@ setTimeout(() => {
             try {
                 const html = await downloadPage(`${splittedHref[k]}`)
                 console.log('SHOULD WORK:'+k);
-                console.log(html, splittedHref[k]);
-                writeStream.write(`${html} ${splittedHref[k]} \n`);
+                console.log(html);
+                writeStream.write(`${html} ; ${splittedHref[k]} \n`);
             } catch (error) {
-                console.error('ERROR:');
+                console.error('ERROR:'+k);
                 console.error(error);
             }
         }
