@@ -12,7 +12,7 @@ contactDate.write(`Name; Adress; url \n`);
 
 var href = '';
 
-for (i = 2; i <= 3; i++) {
+for (i = 1; i <= 3; i++) {
     const url = 'https://www.znanylekarz.pl/fizjoterapeuta/poznan/'+i;
     //console.log(url);
 
@@ -78,15 +78,12 @@ setTimeout(() => {
     //phone-numbers
     const reqHref = href;
     let win = [];
-    let loose = [];
     let splittedHref = reqHref.split('undefined');
+
     function downloadPage(url) {
         return new Promise((resolve, reject) => {
-            //console.log(splittedHref, 'ilosc');
             //pass properly url's
-            //console.log(splittedHref[350]);
             for (x = 0; x <= splittedHref.length; x++) {
-                //console.log(splittedHref[x],'href clog')
                 request(url, (error, response, html) => {
                     if(!error && response.statusCode == 200) {
                         const $ = cheerio.load(html);
@@ -101,19 +98,13 @@ setTimeout(() => {
                         } else {
                             //loose = console.log(i, 'brak numeru');
                             //console.log(i, 'brak numeru');
-                            return null;
+                            reject(null);//reject promise inside if else statement
                         }
                     };
-                    //resolve(win);
-                    reject(new Error('error'));
                 });
             }
         });
     }
-
-    // now to program the "usual" way
-    // all you need to do is use async functions and await
-    // for functions returning promises
 
         async function myBackEndLogic(k) {
             try {
