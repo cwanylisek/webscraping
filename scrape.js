@@ -3,16 +3,16 @@ const request = require('request');
 //const Promise = require('bluebird');
 const cheerio = require('cheerio');
 const fs = require('fs');
-const writeStream = fs.createWriteStream('phone.csv');
-const contactDate = fs.createWriteStream('data.csv');
+const writeStream = fs.createWriteStream('phone14_18.csv');
+const contactDate = fs.createWriteStream('data14_18.csv');
 
 //header
-writeStream.write(`Phone; url \n`);
-contactDate.write(`Name; Adress; url \n`);
+writeStream.write(`url; Phone \n`);
+contactDate.write(`url; Name; Address \n`);
 
 var href = '';
 
-for (i = 1; i <= 3; i++) {
+for (i = 14; i <= 18; i++) {
     const url = 'https://www.znanylekarz.pl/fizjoterapeuta/poznan/'+i;
     //console.log(url);
 
@@ -28,7 +28,7 @@ for (i = 1; i <= 3; i++) {
                 const address = $(el).find('ul').text();
                 const firstLoopHref = $(el).find('.rank-element-name').find('a').attr('href');
                 data.length > 1 == true ? console.log(i, data, address, firstLoopHref) : null; //scrape names from first page check if exist
-                data.length > 1 == true ? contactDate.write(`${data}; ${address}; ${firstLoopHref} \n`): null;
+                data.length > 1 == true ? contactDate.write(`${firstLoopHref}; ${data}; ${address} \n`): null;
                 //console.log(href);
             })
             //console.log(name.length, 'name count');
@@ -88,6 +88,7 @@ setTimeout(() => {
                     if(!error && response.statusCode == 200) {
                         const $ = cheerio.load(html);
                         const phone = $('.modal').find('.well').data('data-id', 'phone-number');//.find('a');
+                        //console.log(phone, 'phone');
                         if (phone != undefined) {
                             phone.each((i, el) => {
                                 const number = $(el).find('b').text();
@@ -111,11 +112,11 @@ setTimeout(() => {
                 const html = await downloadPage(`${splittedHref[k]}`)
                 console.log('SHOULD WORK:'+k);
                 console.log(html);
-                writeStream.write(`${html} ; ${splittedHref[k]} \n`);
+                writeStream.write(`${splittedHref[k]} ; ${html} \n`);
             } catch (error) {
                 console.error('ERROR:'+k);
                 console.error(error);
-                writeStream.write(`brak numeru ; ${splittedHref[k]} \n`);
+                writeStream.write(`${splittedHref[k]} ; brak numeru  \n`);
             }
         }
         console.log(splittedHref.length, 'asdas');
@@ -125,4 +126,4 @@ setTimeout(() => {
         }
 
     // run your async function
-}, 20000);
+}, 12000);
