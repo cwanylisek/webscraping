@@ -3,8 +3,8 @@ const request = require('request');
 //const Promise = require('bluebird');
 const cheerio = require('cheerio');
 const fs = require('fs');
-const writeStream = fs.createWriteStream('phone14_18.csv');
-const contactDate = fs.createWriteStream('data14_18.csv');
+const writeStream = fs.createWriteStream('phone54_60.csv');
+const contactDate = fs.createWriteStream('data54_60.csv');
 
 //header
 writeStream.write(`url; Phone \n`);
@@ -12,8 +12,8 @@ contactDate.write(`url; Name; Address \n`);
 
 var href = '';
 
-for (i = 14; i <= 18; i++) {
-    const url = 'https://www.znanylekarz.pl/fizjoterapeuta/poznan/'+i;
+for (i = 54; i <= 60; i++) {
+    const url = 'https://www.znanylekarz.pl/fizjoterapeuta/warszawa/'+i;
     //console.log(url);
 
     request(url, (error, response, html) => {
@@ -126,4 +126,4 @@ setTimeout(() => {
         }
 
     // run your async function
-}, 12000);
+}, 18000);
